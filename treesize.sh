@@ -1,4 +1,3 @@
-#!/bin/bash
 echo
 while [ -n "$1" ]
 do
@@ -33,6 +32,9 @@ BEGIN {
 AWK_OUT=${AWK_OUT::-2}
 
 d="//"
+
+printf '%s\n' "${AWK_OUT//$d/$'\n'}"
+
 printf '%s\n' "${AWK_OUT//$d/$'\n'}" | sed 1d | \
 while read i
 do
