@@ -34,22 +34,31 @@ AWK_OUT=${AWK_OUT::-2}
 
 d="//"
 
-printf '%s\n' "${AWK_OUT//$d/$'\n'}"
+#Get top level dir size
+substr=.$d
+dirSize=${AWK_OUT%%$substr*}
+
+#printf '%s\n' "${AWK_OUT//$d/$'\n'}"
 
 printf '%s\n' "${AWK_OUT//$d/$'\n'}" | sed 1d | \
+
 while read i
 do
-#  tmp=${i#*.}
-  #tmp=${tmp#*.}
-a
+  tmp=${i#*.}
+  tmp=${tmp#*.}
+  tmpCnt=''
   if [ "$countItems" = true ]; then
-    i=$i `find .$tmp -type f | wc -l`
+     tmpCnt=`find .$tmp -type f | wc -l`
   fi
 
-  echo $i
+  echo $i $tmpCnt
   #printf '| %8s\n |' $line
 done
 
+#printf '%s\n' "${out//$d/$'\n'}"
+
 echo
+echo Dir Size: $dirSize
 echo Total items: `find . -type f | wc -l`
 echo
+
