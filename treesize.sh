@@ -1,3 +1,4 @@
+#!/bin/bash
 echo
 while [ -n "$1" ]
 do
@@ -40,7 +41,7 @@ while read i
 do
 #  tmp=${i#*.}
   #tmp=${tmp#*.}
-
+a
   if [ "$countItems" = true ]; then
     i=$i `find .$tmp -type f | wc -l`
   fi
