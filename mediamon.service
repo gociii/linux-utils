@@ -1,0 +1,10 @@
+[Unit]
+Description=mediamon service
+After=default.target
+
+[Service]
+ExecStart=/usr/bin/mediamon.sh
+ExecStop=/usr/bin/mediamon-stop.sh
+
+[Install]
+WantedBy=default.target
